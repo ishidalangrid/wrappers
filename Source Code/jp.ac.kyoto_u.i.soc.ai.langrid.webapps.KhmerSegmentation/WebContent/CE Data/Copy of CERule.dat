@@ -1,0 +1,180 @@
+﻿#Filename: CERule.dat
+# Author : PAN Localization Cambodia
+#Version 0.0
+
+###########################################################################
+#To generate the KCE, we built three types of rule. Each rule focuses on different block of characters in the KCC. 
+#
+#	-	Rule Type 1(Consonant Rule): Focuses on the Consonant and ROBAT block
+#	-	Rule Type 2(Subscript Rule): Focuses on the subscript, consonant shifter block
+#	-	Rule Type 3(Vowel Rule): Focuses on the vowels and various sign block.
+#The main processes for building the KCE are first to match the current KCC with all the rules in the three types of rules. One KCC could match only to one rule in each three types of rule. Then, if the KCC match the rules, it will be mapped to other string according to the corresponding mapping rules.
+#
+#Therefore, each rule consists of two parts: matching rule and mapping rule.
+#
+#Matching Rules
+#A matching rule is the combination of one or more KCC matching rules, in which contains five main blocks.
+#
+#The first block: is the consonant block. The value of the block could be
+#	o	A consonant
+#	o	0 : The sound of KCC is [អ] (Sound A)
+#	o	1 : The sound of KCC is [អ៊] (Sound O)
+#	o	2 : The sound of the KCC is either [អ] (Sound A) or [អ៊] (Sound O)
+#The second-fifth block: The second block is the subscript block, the third is Consonant shifter block, the fourth is the vowel block and the fifth is the various sign block. The value of each block could be:
+#	o	The character of corresponding block, for example, the vowel block should contain a vowel.
+#	o	0 : The current KCC must not have the character of the corresponding block
+#	o	1 : The current KCC must have at least one character of the corresponding block
+#	o	2 : The current KCC must either have the character of the corresponding block or not
+#
+#
+#Mapping Rules
+#A mapping rule is the combination of one or more KCC mapping rules, in which contains five main block, the consonant block, subscript block, consonant shifter block, vowel block, and various sign block. The value of each block could be:
+#	o	The mapping character of the corresponding block, for example, the vowel block should contain a vowel.
+#	o	0 : The mapping character is the same as the matching character
+#	o	1: There is no mapping character.
+#
+#
+#Example of the KCE building process
+#Given rules set as below
+#	1.	Type 1 rule: 0,2,2,2,2;ឡ,2,2,2,2=0,0,0,0,0;ល,0,0,0,0
+#	2.	Type 3 rule: 0,2,2,0,ំ=0,0,0,0,ម
+#
+#The first rule means that the consonant ឡ could be replaced by ល when the sound of the first KCC is [អ] (Sound A). However, the second rule means that the vowel ំ is replaced by ម when in the KCC which contains the vowel has the A sound and there is no other vowel in the KCC.
+#
+#Due to its similar pronunciation, the KCE of the three words សំលេង សំឡេង សម្លេង must be the same. The KCE representing the three words are:
+
+#សម្លេង = សមលេង
+#សំលេង = សមលេង due to the first rule.
+#សំឡេង = សមលេង due to the second rule.
+#
+#Therefore, when the user falls to write one of the above sets, it is treated as the same. According to CHUON NATH dictionary, the correct #word is សំឡេង.
+#######################################################################################
+
+
+#Consonant block
+C	32
+1	2,2,2,2,2;ខ,0,0,0,0=0,0,0,0,0;ក,0,0,0,0
+1	2,2,2,2,2;គ,0,0,0,0=0,0,0,0,0;ក,0,0,0,0
+1	2,2,2,2,2;ឃ,0,0,0,0=0,0,0,0,0;ក,0,0,0,0
+1	2,2,2,2,2;ជ,0,0,0,0=0,0,0,0,0;ច,0,0,0,0
+1	2,2,2,2,2;ឃ,0,0,0,0=0,0,0,0,0;ក,0,0,0,0
+1	2,2,2,2,2;ថ,0,0,0,0=0,0,0,0,0;ដ,0,0,0,0
+1	2,2,2,2,2;ធ,0,0,0,0=0,0,0,0,0;ដ,0,0,0,0
+1	2,2,2,2,2;ត,0,0,0,0=0,0,0,0,0;ដ,0,0,0,0
+1	2,2,2,2,2;ទ,0,0,0,0=0,0,0,0,0;ដ,0,0,0,0
+1	2,2,2,2,2;ណ,2,2,2,2=0,0,0,0,0;ន,0,0,0,0
+1	2,2,2,2,2;ព,2,2,2,2=0,0,0,0,0;ប,0,0,0,0
+1	0,2,2,2,2;ឡ,2,2,2,2=0,0,0,0,0;ល,0,0,0,0
+1	1,0,0,0,0;ម,1,0,2,2=0,0,0,ុ,0;0,0,0,0,0
+
+#1	2,2,2,2,2;រ,0,0,0,0=0,0,0,0,0;1,0,0,0,0
+1	ដ,0,0,0,ំ=ត,0,0,0,ម
+1	ខ,1,2,2,2=ក,0,0,0,0
+1	ឆ,1,2,2,2=ច,0,0,0,0
+##########################
+1	ប,1,2,ូ,2=ប,0,0,0,0
+1	ប,1,2,ៃ,2=ប,0,0,0,0
+1	ប,1,2,ោ,2=ប,0,0,0,0
+1	ប,1,2,ៅ,2=ប,0,0,0,0
+1	ប,1,2,ំ,2=ប,0,0,0,0
+1	ប,1,2,2,ះ=ប,0,0,0,0
+1	ប,1,2,ា,2=ប,0,0,0,0
+1	ប,1,2,1,2=ព,0,0,0,0
+##########################
+1	ក,1,2,ូ,2=ក,0,0,0,0
+1	ក,1,2,ៃ,2=ក,0,0,0,0
+1	ក,1,2,ោ,2=ក,0,0,0,0
+1	ក,1,2,ៅ,2=ក,0,0,0,0
+1	ក,1,2,ំ,2=ក,0,0,0,0
+1	ក,1,2,2,ះ=ក,0,0,0,0
+1	ក,1,2,ា,2=ក,0,0,0,0
+1	ក,1,2,1,2=គ,0,0,0,0
+#########################
+#########################
+
+#Subscript block
+S	31
+2	ត,ដ,2,2,2=0,1,0,0,0
+2	2,ត,2,2,2=0,ដ,0,0,0
+2	ស,ស,0,2,0=0,1,0,0,0
+2	ច,ច,0,2,0=0,1,0,0,0
+2	ញ,ញ,0,2,0=0,1,0,0,0
+2	ត,ត,0,2,0=0,1,0,0,0
+2	ង,ង,0,2,0=0,1,0,0,0
+2	ក,ក,0,2,0=0,1,0,0,0
+2	ណ,ណ,0,2,0=0,1,0,0,0
+2	ន,ន,0,2,0=0,1,0,0,0
+2	ល,ល,0,2,0=0,1,0,0,0
+2	ដ,ដ,0,2,0=0,1,0,0,0
+2	ទ,ទ,0,2,0=0,1,0,0,0
+2	ព,ព,0,2,0=0,1,0,0,0
+2	ប,ប,0,2,0=0,1,0,0,0
+2	ម,ម,0,2,0=0,1,0,0,0
+2	យ,យ,0,2,0=0,1,0,0,0
+2	ខ,ខ,0,2,0=0,1,0,0,0
+2	គ,គ,0,2,0=0,1,0,0,0
+2	ឃ,ឃ,0,2,0=0,1,0,0,0
+2	ឆ,ឆ,0,2,0=0,1,0,0,0
+2	ឈ,ឈ,0,2,0=0,1,0,0,0
+2	ថ,ថ,0,2,0=0,1,0,0,0
+2	ធ,ធ,0,2,0=0,1,0,0,0
+2	ផ,ផ,0,2,0=0,1,0,0,0
+2	ភ,ភ,0,2,0=0,1,0,0,0
+2	រ,រ,0,2,0=0,1,0,0,0
+2	វ,វ,0,2,0=0,1,0,0,0
+2	ហ,ហ,0,2,0=0,1,0,0,0
+2	ឡ,ឡ,0,2,0=0,1,0,0,0
+2	អ,អ,0,2,0=0,1,0,0,0
+
+#Vowel block
+V	44
+######################
+3	ប,1,2,ា,2=0,0,0,0,0
+3	ប,1,2,ៀ,2=0,0,0,ា,0
+
+3	ក,1,2,ា,2=0,0,0,0,0
+3	ក,1,2,ៀ,2=0,0,0,ា,0
+######################
+3	0,2,2,0,ះ=0,0,0,ា,ស
+3	2,2,2,ុ,ំ=0,0,0,0,ម
+3	0,2,2,0,ំ=0,0,0,0,ម
+3	1,2,2,0,ំ=0,0,0,ុ,ម
+##########################
+3	0,2,2,ៀ,0=2,0,0,ា,0
+3	1,2,2,ៀ,0=0,0,0,ា,0
+
+3	0,1,2,1,2=2,0,0,0,0
+3	1,2,2,1,0=0,0,0,ា,0
+##########################
+3	2,2,2,ា,ះ=0,0,0,0,ស
+3	0,2,2,ៀ,ះ=2,0,0,ា,ស
+3	1,2,2,ៀ,ះ=0,0,0,ា,ស
+3	1,2,2,ោ,ះ=2,0,0,ួ,ស
+3	0,2,2,ោ,ះ=0,0,0,1,ស
+3	2,2,2,ឺ,ះ=0,0,0,0,ស
+3	2,2,2,ឹ,ះ=0,0,0,0,ស
+3	2,2,2,ុ,ះ=0,0,0,0,ស
+3	2,2,2,ូ,ះ=0,0,0,0,ស
+3	2,2,2,ើ,ះ=0,0,0,0,ស
+3	2,2,2,េ,ះ=0,0,0,0,ស
+3	2,2,2,ែ,ះ=0,0,0,0,ស
+3	2,2,2,0,័;ក,2,2,2,0=0,0,0,ា,1;0,0,0,0,0
+3	2,2,2,0,័;គ,2,2,2,0=0,0,0,ា,1;0,0,0,0,0
+3	2,2,2,0,័;ត,2,2,2,0=0,0,0,ា,1;0,0,0,0,0
+3	2,2,2,0,័;ន,2,2,2,0=0,0,0,ា,1;0,0,0,0,0
+3	2,2,2,0,័;ព,2,2,2,0=0,0,0,ា,1;០,0,0,0,0
+3	2,2,2,0,័;ល,2,2,2,0=0,0,0,ា,1;០,0,0,0,0
+3	2,2,2,0,័;ស,2,2,2,0=0,0,0,ា,1;០,0,0,0,0
+3	2,2,2,0,័;ង,2,0,0,0=0,0,0,ា,ំ;០,0,0,0,0
+3	2,2,2,ិ,0;ញ,2,0,2,2=0,0,0,េ,0;០,0,0,0,0
+3	2,2,2,ិ,0;ច,0,0,0,0=0,0,0,េ,0;០,0,0,0,0
+3	1,2,0,0,0;ម,1,0,2,0=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ង,1,0,2,0=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ប,1,0,2,0=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ន,1,0,2,0=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ម,0,0,0,់=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ង,0,0,0,់=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ប,0,0,0,់=0,0,0,ុ,0;0,0,0,0,0
+3	1,2,0,0,0;ន,0,0,0,់=0,0,0,ុ,0;0,0,0,0,0
+3	2,2,2,0,័;យ,0,0,0,0=0,0,0,ៃ,1;1,1,1,1,1
+3	1,2,0,ូ,0;វ,0,0,0,0=0,0,0,ៅ,1;1,1,1,1,1

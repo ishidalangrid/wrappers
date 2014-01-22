@@ -1,0 +1,185 @@
+﻿# File name : KhmerCharacter.dat
+# Author : PAN Localization Cambodia
+#Version:0.0
+#Date : 11 August, 2005
+
+# Consonant : Character	Type	Vowel sound	Group	Tamrouttable	SoundShiftable	Correspondent opposite sound
+
+ក	1	0	1	0	0	គ
+ខ	1	0	1	0	0	ឃ
+គ	1	1	1	0	0	ក
+ង	1	1	1	1	1	N
+ច	1	0	2	0	0	ជ
+ឆ	1	0	2	0	0	ឈ
+ជ	1	1	2	0	0	ច
+ញ	1	1	2	1	1	N
+ដ	1	0	3	0	0	ឌ
+ឋ	1	0	3	0	0	N
+ឌ	1	1	3	0	0	ដ
+ណ	1	0	3	1	0	ន
+ត	1	0	4	0	0	ទ
+ថ	1	0	4	0	0	ធ
+ទ	1	1	4	0	0	ត
+ធ	1	1	4	0	0	ថ
+ន	1	1	4	1	1	ណ
+ផ	1	0	5	0	0	ភ
+ព	1	1	5	0	0	N
+ភ	1	1	5	0	0	ផ
+ម	1	1	5	1	1	N
+ល	1	1	0	0	1	ឡ
+វ	1	1	0	0	1	N
+ឝ	1	1	0	0	0	N
+ឞ	1	1	0	0	0	N
+ហ	1	0	0	0	1	N
+ឡ	1	0	0	0	0	ល
+អ	1	0	0	0	0	N
+# Consonant that its subscript is on the east						
+ឃ	2	1	1	0	0	ខ
+ឈ	2	1	2	0	0	ឆ
+ឍ	2	1	3	0	0	N
+ប	2	0	5	0	0	N
+យ	2	1	0	0	0	N
+ស	2	0	0	0	0	N
+# Consonant that its subscript is on the west						
+រ	3	1	0	0	1	N
+
+#Independent vowel		
+# Character	Type	Vowel sound	Similar sound string
+ឣ	4	0	ឣ
+ឤ	4	0	ឤ
+ឥ	4	0	អិ
+ឦ	4	0	ឦ
+ឧ	4	0	អុ
+ឨ	4	0	ឨ
+ឩ	4	0	ឩ
+ឪ	4	0	អូវ
+ឫ	4	1	រឹ
+ឬ	4	1	រឺ
+ឭ	4	1	លឹ
+ឮ	4	1	លឺ
+ឯ	4	0	អែ
+ឰ	4	0	ឰ
+ឱ	4	0	អោ
+ឲ	4	0	ឲ
+ឳ	4	0	ឳ
+#Vowel
+#Character	Type	Open or close
+#West vowel
+ើ	5	0
+េ	5	1
+ែ	5	0
+ៃ	5	0
+#South vowel		
+ុ	6	1
+ូ	6	0
+ួ	6	0
+#North vowels		
+ិ	7	1
+ី	7	1
+ឹ	7	1
+ឺ	7	0
+#East vowel		
+ា	8	1
+ឿ	8	0
+ៀ	8	0
+ោ	8	0
+ៅ	8	0
+#Various sign
+# Character	type	Omittable
+ៈ	9	1
+់	9	1
+៍	9	1
+៎	9	1
+៏	9	0
+័	9	0
+៑	9	1
+្	9	0
+៓	9	1
+##Srak am		
+ំ	9	0
+##Srak AH		
+ះ	9	0
+# Consonant shifters	
+#Character	Type
+៉	A
+៊	A
+#ROBAT
+៌	C
+#Zero Width Non-Joiner
+‍ZN	E
+
+#Zero width Joiner
+Z	F
+
+
+#Independent script
+#ៗ	B
+៘	B
+#Other
+
+#Delimiter	
+។	D
+#៕	D
+#៖	D
+#៘	D
+#៙	D
+#៚	D
+#៛	D
+#ៜ	D
+#Digit	
+#០	D
+#១	D
+#២	D
+#៣	D
+#៤	D
+#៥	D
+#៦	D
+#៧	D
+#៨	D
+#៩	D
+#Divination lore	
+#៰	D
+#៱	D
+#៲	D
+#៳	D
+#៴	D
+#៵	D
+#៶	D
+#៷	D
+#៸	D
+#៹	D
+#Lunar date	
+#᧠	D
+#᧡	D
+#᧢	D
+#᧣	D
+#᧤	D
+#᧥	D
+#᧦	D
+#᧧	D
+#᧨	D
+#᧩	D
+#᧪	D
+#᧫	D
+#᧬	D
+#᧭	D
+#᧮	D
+#᧯	D
+#᧰	D
+#᧱	D
+#᧲	D
+#᧳	D
+#᧴	D
+#᧵	D
+#᧶	D
+#᧷	D
+#᧸	D
+#᧹	D
+#᧺	D
+#᧻	D
+#᧼	D
+#᧽	D
+#᧾	D
+#᧿	D
+
+#End of document

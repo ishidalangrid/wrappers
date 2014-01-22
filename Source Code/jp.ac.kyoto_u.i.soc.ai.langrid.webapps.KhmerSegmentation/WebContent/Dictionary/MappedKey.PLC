@@ -1,0 +1,13 @@
+﻿#Mapped Keys   Ex:  A	A,B,C
+#Note: Each must be a single character.
+#Make sure A	A,...
+ត	ត,ដ
+ដ	ដ,ត
+ន	ន,ណ
+ណ	ណ,ន
+ខ	ខ,ឃ
+ឃ	ឃ,ខ
+ឲ	ឱ
+ឱ	ឲ
+អ	អ,ឥ,ឦ,ឧ,ឩ,ឪ,ឱ,ឯ
+ច	ច,ជ

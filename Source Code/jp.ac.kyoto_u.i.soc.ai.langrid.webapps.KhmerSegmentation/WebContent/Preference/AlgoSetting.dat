@@ -1,0 +1,6 @@
+# Author : PAN Localization Cambodia
+#Two algorithm can be selected for the word segmentation
+#Choose 1: For word bigram model, high accuracy but slow
+#Choose 0: For Maximum Matching Model, Fast but not so high accuracy
+
+0
