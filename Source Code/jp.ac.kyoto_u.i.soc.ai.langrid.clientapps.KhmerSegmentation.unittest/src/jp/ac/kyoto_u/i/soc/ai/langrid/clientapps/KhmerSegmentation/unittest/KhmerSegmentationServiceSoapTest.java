@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import static jp.go.nict.langrid.language.ISO639_1LanguageTags.tr;
+import static jp.go.nict.langrid.language.ISO639_1LanguageTags.km;
 
 import java.net.URL;
 
@@ -22,6 +22,6 @@ public class KhmerSegmentationServiceSoapTest {
 						"http://localhost:8080/jp.go.nict.langrid.webapps.blank/services/KhmerSegmentationService"));
 
 		String sentence = "មនុស្សប្រើប្រាស់ពេជ្រចាប់តាំងពីរាប់ពាន់ឆ្នាំមកហើយ។ ពេជ្រនៅតែតំណាងឲ្យអំណាចនិងកេរ្តិ៍ឈ្មោះ។ ជនល្បីៗនៅទូទាំងពិភពលោកសុទ្ធតែពាក់ពេជ្រ។";
-		Morpheme[] result = service.analyze(tr, sentence);
+		Morpheme[] result = service.analyze(km, sentence);
 	}
 }
