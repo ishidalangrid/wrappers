@@ -1,6 +1,7 @@
 package jp.ac.kyoto_u.i.soc.ai.langrid.webapps.KhmerSegmentation;
 
 import static jp.go.nict.langrid.language.ISO639_1LanguageTags.km;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -9,6 +10,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+
+import org.springframework.util.ReflectionUtils;
 
 import KhmerSpellCheckerED_and_KCR.ErrorWordDetector.ErrorWordDetector;
 import KhmerSpellCheckerED_and_KCR.ErrorWordDetector.KhDictionary;
@@ -45,12 +49,24 @@ public class KhmerSegmentationService extends
 	protected Collection<Morpheme> doAnalyze(Language language, String text)
 			throws InvalidParameterException, ProcessFailedException {
 		// invoke private analyze method
-		Collection<Morpheme> results;
+		Collection<Morpheme> results = new LinkedList<Morpheme>();
 		try {
 			results = analyze(text);
 			return results;
+
 		} catch (Exception e) {
-			e.printStackTrace();
+			
+			String errorMessage = "";
+			errorMessage+=e.getMessage();
+			errorMessage+="\r";
+			
+			StackTraceElement[] stacks = e.getStackTrace();
+			for (StackTraceElement stackTraceElement : stacks) {
+				errorMessage+= stackTraceElement.toString()+"\r";
+			}
+			
+			java.util.logging.Logger.getGlobal().log(Level.SEVERE, errorMessage);
+			
 			return null;
 		}
 	}
@@ -78,8 +94,9 @@ public class KhmerSegmentationService extends
 
 	/**
 	 * Returns user preference of algorithm selection
+	 * @throws ProcessFailedException 
 	 */
-	private static boolean getAlgorithm(String filename) {
+	private static boolean getAlgorithm(String filename) throws ProcessFailedException {
 		String buffer = "";
 		String algo = "";
 		try {
@@ -104,13 +121,13 @@ public class KhmerSegmentationService extends
 			}
 			return true;
 		} catch (Exception ex) {
+			java.util.logging.Logger.getGlobal().log(Level.ALL, ex.getMessage());
+			return false;
 		}
-		return true;
 	}
 
 	private static boolean checkHeader(String fileName) throws Exception {
 		String buffer = "";
-		try {
 			BufferedReader reader = new BufferedReader(new FileReader(fileName));
 			int v = 0;
 			do {
@@ -137,9 +154,6 @@ public class KhmerSegmentationService extends
 			}
 			reader.close();
 			return false;
-		} catch (Exception ex) {
-			throw new Exception(ex.getMessage());
-		}
 	}
 }
 
