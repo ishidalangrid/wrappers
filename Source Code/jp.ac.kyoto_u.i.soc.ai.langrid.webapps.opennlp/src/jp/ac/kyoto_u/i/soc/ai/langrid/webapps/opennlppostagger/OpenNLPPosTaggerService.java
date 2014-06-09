@@ -6,6 +6,7 @@ import static jp.go.nict.langrid.language.ISO639_1LanguageTags.nl;
 import static jp.go.nict.langrid.language.ISO639_1LanguageTags.pt;
 import static jp.go.nict.langrid.language.ISO639_1LanguageTags.se;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,14 +16,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-
-
-
-
-
-
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -90,11 +83,18 @@ public class OpenNLPPosTaggerService extends
 	}
 	
 	
+	private String modelPath;
+	
+	public void setModelPath(String modelPath) {
+		this.modelPath = modelPath;
+	}
+	
 	/**
 	 * Constructor
 	 * @throws IOException 
 	 */
 	public OpenNLPPosTaggerService() throws IOException {
+		modelPath = getInitParameterString("modelPath", "/srv/openlangrid/resource/OpenNLP/models");
 		setSupportedLanguageCollection(Arrays.asList(en,da,de,nl,pt,se));
 	}
 	
@@ -160,7 +160,6 @@ public class OpenNLPPosTaggerService extends
 	
 	private String getPOSModelByLang(Language language)
 	{
-		String modelFolderPath = getModelPath();
 		String modelFileName = "en-pos-maxent.bin";
 		
 		if(language == en )
@@ -176,12 +175,11 @@ public class OpenNLPPosTaggerService extends
 		if(language == se )
 			modelFileName = "se-pos-maxent.bin";
 
-		return modelFolderPath + modelFileName;
+		return modelPath + File.separator + modelFileName;
 	}
 	
 	private String getTokinizerModelByLang(Language language)
 	{
-		String modelFolderPath = getModelPath();
 		String modelFileName = "en-token.bin";
 		
 		if(language == en )
@@ -197,11 +195,6 @@ public class OpenNLPPosTaggerService extends
 		if(language == se )
 			modelFileName = "se-token.bin";
 
-		return modelFolderPath + modelFileName;
-	}
-	
-	private String getModelPath()
-	{
-			return "WebContent/" + "model/";
+		return modelPath + File.separator + modelFileName;
 	}
 }

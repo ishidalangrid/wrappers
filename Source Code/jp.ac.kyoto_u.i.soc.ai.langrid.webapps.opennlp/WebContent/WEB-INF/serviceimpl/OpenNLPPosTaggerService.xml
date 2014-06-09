@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  <bean id="target" class="jp.go.nict.langrid.servicecontainer.handler.TargetServiceFactory" >
-     <property name="service">
-      <bean class="jp.ac.kyoto_u.i.soc.ai.langrid.webapps.opennlppostagger.OpenNLPPosTaggerService" />
-    </property>
- </bean>
+	<bean id="target"
+		class="jp.go.nict.langrid.servicecontainer.handler.TargetServiceFactory">
+		<property name="service">
+			<bean
+				class="jp.ac.kyoto_u.i.soc.ai.langrid.webapps.opennlppostagger.OpenNLPPosTaggerService">
+				<property name="modelPath"
+					value="/home/trangmx/LRs/OpenNLP/models" />
+			</bean>
+		</property>
+	</bean>
 </beans>
